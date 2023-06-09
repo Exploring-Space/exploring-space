@@ -3,20 +3,24 @@ import { LandingPageText } from "./canvas/3dText";
 import { Canvas } from "@react-three/fiber";
 import { Loader } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
-import launchAudio from "/assets/Audio/armstrongSmallStepCrop.wav";
 import { Background } from "./canvas/Background";
 import { PresentationControls } from "@react-three/drei";
 import { useState } from "react";
+import launchAudio from "/assets/Audio/armstrongSmallStepCrop.wav";
 
 export function LandingPage() {
   const [clicked, setClicked ] = useState(false);
 
   const navigate = useNavigate();
 
+  const audio = new Audio();
+  audio.preload = "auto";
+  audio.src = launchAudio;
+
   function startAudio() {
     if (!clicked) {
       setClicked(true)
-      new Audio(launchAudio).play();
+      audio.play();
     }
   }
 
