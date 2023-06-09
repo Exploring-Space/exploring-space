@@ -1,10 +1,10 @@
-import { Float } from "@react-three/drei";
-import { LandingPageText } from "./canvas/LandingPageText";
+import { Float, Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Loader } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
-import launchAudio from "/assets/audio/launchAudio.mp3";
+
+import { LandingPageText } from "./canvas/LandingPageText";
 import { Background } from "./canvas/Background";
+import launchAudio from "/assets/audio/launchAudio.mp3";
 
 export function LandingPage() {
   const navigate = useNavigate();

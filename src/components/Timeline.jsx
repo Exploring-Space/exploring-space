@@ -1,6 +1,7 @@
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useLayoutEffect, useRef } from "react";
+
 import "../styles/Timeline.css"
 
 gsap.registerPlugin(ScrollTrigger);

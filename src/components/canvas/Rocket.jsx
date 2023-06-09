@@ -1,12 +1,12 @@
 import React, { useRef, useLayoutEffect, useState } from "react";
-import { useGLTF, useScroll } from "@react-three/drei";
-import { OrthographicCamera } from "@react-three/drei";
-import gsap from "gsap";
+import { useGLTF, useScroll, OrthographicCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import gsap from "gsap";
+
 import rocketSound from "/assets/audio/rocket-sound.mp3";
 
 export function Rocket(props) {
-  const { nodes, materials } = useGLTF("/assets/models/rocket.glb");
+  const { nodes } = useGLTF("/assets/models/rocket.glb");
   const [played, setPlayed] = useState(false);
 
   const ref = useRef();

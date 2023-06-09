@@ -1,9 +1,10 @@
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { useState, useEffect, useRef } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { Timeline } from "./Timeline";
 import { DoubleSide } from "three";
 import { Float } from "@react-three/drei";
+
+import { Timeline } from "./Timeline";
 
 export function Card() {
   const [planets, setPlanets] = useState([]);

@@ -1,11 +1,11 @@
 import { Canvas } from "@react-three/fiber";
-import { Rocket } from "./canvas/Rocket";
 import { ScrollControls, PresentationControls } from "@react-three/drei";
+
+import { Rocket } from "./canvas/Rocket";
 
 export function RocketModel() {
   return (
     <Canvas camera={{ fov: 20 }}>
-      {/* ref={trigger} */}
       <ambientLight intensity={2} color="#fff" />
       <ScrollControls pages={1} damping={0.4}>
         <PresentationControls

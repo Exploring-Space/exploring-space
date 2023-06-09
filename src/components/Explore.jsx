@@ -1,8 +1,9 @@
-import { Cards } from "./Cards";
-import { RocketModel } from "./RocketModel";
-import { Background } from "./canvas/Background";
-import { SolarSystem } from "./SolarSystem";
 import { Loader } from "@react-three/drei";
+
+import { Background } from "./canvas/Background";
+import { RocketModel } from "./RocketModel";
+import { Cards } from "./Cards";
+import { SolarSystem } from "./SolarSystem";
 import "../App.css";
 
 export function Explore() {
