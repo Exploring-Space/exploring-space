@@ -1,13 +1,14 @@
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { useState, useEffect, useRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
+import { Select, Selection, SelectiveBloom, EffectComposer } from "@react-three/postprocessing";
 import { Timeline } from "./Timeline";
 import { DoubleSide } from "three";
 import { Float } from "@react-three/drei";
 
 export function Card() {
   const [planets, setPlanets] = useState([]);
-
+  
   useEffect(() => {
     const fetchPlanets = async () => {
       try {
@@ -18,16 +19,17 @@ export function Card() {
         console.error("Error fetching planets:", error);
       }
     };
-
+    
     fetchPlanets();
   }, []);
-
+  
   const Planet = ({ planet }) => {
     const meshRef = useRef();
     const colorMap = useLoader(
       TextureLoader,
       "/assets/textures/saturn-rings.jpg"
-    );
+      );
+    const [hovered, hover] = useState(null);
 
     useFrame(({ clock }) => {
       const a = clock.getElapsedTime();
@@ -38,12 +40,14 @@ export function Card() {
 
     return (
       <>
-        <mesh ref={meshRef} rotation-x={0}>
+      <Select enabled={hovered && planet.id === "sun"}>
+        <mesh ref={meshRef} rotation-x={0} onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}>
           <sphereGeometry attach="geometry" args={[2.5, 32, 32]} />
           <meshStandardMaterial
             map={useLoader(TextureLoader, planet.texture)}
           />
         </mesh>
+      </Select>
         {planet.name === "Saturn" && ( // Add conditional rendering for Saturn
           <mesh rotation={[1.65, -0.13, -37.5]}>
             <ringGeometry attach="geometry" args={[3.8, 2.8, 65]} />
@@ -68,10 +72,15 @@ export function Card() {
               {/* Lighting for sphere/Planet */}
               <ambientLight intensity={0.2} />
               <directionalLight />
-              {/* Creating the Sphere/Planet */}
-              <Float floatIntensity={4} rotationIntensity={0.5}>
-                <Planet planet={planet} />
-              </Float>
+              <Selection>
+                <EffectComposer multisampling={0}>
+                  <SelectiveBloom mipmapBlur radius={0.275} luminanceThreshold={0} intensity={1.6} />
+                </EffectComposer>
+                {/* Creating the Sphere/Planet */}
+                <Float floatIntensity={4} rotationIntensity={0.5}>
+                  <Planet planet={planet} />
+                </Float>
+              </Selection>
             </Canvas>
           </div>
           <div className="text-white pt-6 w-2/3 bg-cover bg-gradient-to-r from-blue-950 to-slate-900 shadow-lg shadow-[#040c16] group container rounded-md basis-1/3">
