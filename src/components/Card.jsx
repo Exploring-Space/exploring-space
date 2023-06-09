@@ -6,7 +6,9 @@ import { Timeline } from "./Timeline";
 import { DoubleSide } from "three";
 import { Float } from "@react-three/drei";
 
+
 export function Card() {
+  const lightRef = useRef();
   const [planets, setPlanets] = useState([]);
   
   useEffect(() => {
@@ -70,11 +72,11 @@ export function Card() {
           <div className="basis-1/2">
             <Canvas>
               {/* Lighting for sphere/Planet */}
-              <ambientLight intensity={0.2} />
-              <directionalLight />
+              <ambientLight intensity={0.2} ref={lightRef}/>
+              <pointLight position={[10, 10, 10]} intensity={1} />
               <Selection>
-                <EffectComposer multisampling={0}>
-                  <SelectiveBloom mipmapBlur radius={0.275} luminanceThreshold={0} intensity={1.6} />
+                <EffectComposer>
+                  <SelectiveBloom lights={[lightRef]} mipmapBlur radius={0.275} luminanceThreshold={0} intensity={1} />
                 </EffectComposer>
                 {/* Creating the Sphere/Planet */}
                 <Float floatIntensity={4} rotationIntensity={0.5}>
