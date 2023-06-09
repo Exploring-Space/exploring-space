@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { useGLTF, OrthographicCamera } from "@react-three/drei";
 
 export function LandingPageText(props) {
-  const { nodes, materials } = useGLTF("/assets/models/LandingPageText.glb");
+  const { nodes, materials } = useGLTF("/assets/models/landing-page-text.glb");
   return (
     <group {...props} dispose={null} rotation={[-0.1, 0, 0]}>
       <group scale={0.015}>
@@ -74,4 +74,4 @@ export function LandingPageText(props) {
   );
 }
 
-useGLTF.preload("/assets/models/LandingPageText.glb");
+useGLTF.preload("/assets/models/landing-page-text.glb");

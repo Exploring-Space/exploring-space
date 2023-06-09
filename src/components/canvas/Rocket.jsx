@@ -3,10 +3,10 @@ import { useGLTF, useScroll } from "@react-three/drei";
 import { OrthographicCamera } from "@react-three/drei";
 import gsap from "gsap";
 import { useFrame } from "@react-three/fiber";
-import rocketSound from "/assets/Audio/rocket-sound.mp3";
+import rocketSound from "/assets/audio/rocket-sound.mp3";
 
 export function Rocket(props) {
-  const { nodes, materials } = useGLTF("/assets/models/withflag.glb");
+  const { nodes, materials } = useGLTF("/assets/models/rocket.glb");
   const [played, setPlayed] = useState(false);
 
   const ref = useRef();
@@ -181,4 +181,4 @@ export function Rocket(props) {
   );
 }
 
-useGLTF.preload("/assets/models/withflag.glb");
+useGLTF.preload("/assets/models/rocket.glb");
