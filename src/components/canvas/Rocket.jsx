@@ -3,7 +3,7 @@ import { useGLTF, useScroll, OrthographicCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 
-import rocketSound from "/assets/audio/rocket-sound.mp3";
+import rocketSound from "/assets/Audio/rocket-sound.mp3";
 
 export function Rocket(props) {
   const { nodes } = useGLTF("/assets/models/rocket.glb");

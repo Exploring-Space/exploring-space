@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { LandingPageText } from "./canvas/LandingPageText";
 import { Background } from "./canvas/Background";
-import launchAudio from "/assets/audio/launchAudio.mp3";
+import launchAudio from "/assets/Audio/launchAudio.mp3";
 
 export function LandingPage() {
   const navigate = useNavigate();
